@@ -28,11 +28,22 @@ application {
     mainClass = 'MainKt'
 }
 
+
 // `runMultiplicationTable` 태스크 추가
 tasks.register('runMultiplicationTable', JavaExec) {
     group = 'application'
     description = 'Run the multiplication table application.'
     mainClass = 'MainKt'
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+    standardOutput = System.out
+}
+
+
+tasks.register('runMinMaxFinder', JavaExec) {
+    group = 'application'
+    description = 'Run the multiplication table application.'
+    mainClass = 'MinMaxFinderKt'
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in
     standardOutput = System.out
