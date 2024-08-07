@@ -1,3 +1,5 @@
+
+
 // 플러그인 설정 : org.jetbrains.kotlin.jvm: Kotlin 코드를 JVM에서 실행할 수 있게 컴파일하는 플러그인입니다. 버전 1.8.21을 사용합니다.
 // application: 애플리케이션을 실행할 수 있게 해주는 Gradle 플러그인입니다.
 plugins {
@@ -17,13 +19,17 @@ repositories {
 // testImplementation: 테스트 실행 시 필요한 Kotlin 테스트 라이브러리를 추가합니다.
 dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
+    testImplementation 'org.testng:testng:7.8.0'
+    testImplementation 'org.slf4j:slf4j-simple:1.7.32'
 }
 
 // JUnit 플랫폼을 사용하여 테스트를 실행하도록 설정합니다.
 test {
-    useJUnitPlatform()
+    useTestNG()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
-
 // Kotlin 컴파일러가 Java 17 버전을 타겟으로 하도록 설정합니다.
 kotlin {
     jvmToolchain {
@@ -36,7 +42,6 @@ application {
     mainClass = 'MainKt'
 }
 
-
 // `runMultiplicationTable` 태스크 추가
 tasks.register('runMultiplicationTable', JavaExec) {
     group = 'application'
@@ -46,7 +51,6 @@ tasks.register('runMultiplicationTable', JavaExec) {
     standardInput = System.in
     standardOutput = System.out
 }
-
 
 tasks.register('runMinMaxFinder', JavaExec) {
     group = 'application'
