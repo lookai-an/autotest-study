@@ -38,7 +38,7 @@ class SampleTest {
     }
 
     @Test
-    fun sampleTest() {
+    fun SampleTest() {
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
 
         // IntegerA 텍스트 필드 찾기 및 입력
