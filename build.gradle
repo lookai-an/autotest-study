@@ -11,26 +11,43 @@ plugins {
 group = 'study-kotlin2024'
 description = "study-kotlin2024"
 
-// mavenCentral(): Maven Central 저장소를 사용하여 프로젝트 의존성을 다운로드합니다.
 repositories {
     mavenCentral()
 }
 
-// testImplementation: 테스트 실행 시 필요한 Kotlin 테스트 라이브러리를 추가합니다.
 dependencies {
-    testImplementation 'org.jetbrains.kotlin:kotlin-test'
-    testImplementation 'org.testng:testng:7.8.0'
-    testImplementation 'org.slf4j:slf4j-simple:1.7.32'
+    // Kotlin 테스트 라이브러리
+    implementation("org.jetbrains.kotlin:kotlin-test")
+
+    // TestNG
+    implementation("org.testng:testng:7.8.0")
+
+    // 호환되는 Appium Java Client 버전
+    implementation("io.appium:java-client:8.3.0")
+
+    // 호환되는 Selenium 버전
+    implementation("org.seleniumhq.selenium:selenium-java:4.9.1")
+
 }
 
-// JUnit 플랫폼을 사용하여 테스트를 실행하도록 설정합니다.
+
+configurations.all {
+    resolutionStrategy {
+        eachDependency {
+            if (requested.group == "org.seleniumhq.selenium" && requested.name == "selenium-api") {
+                useVersion("4.9.1") // 버전을 강제로 설정
+            }
+        }
+    }
+}
+
 test {
     useTestNG()
     testLogging {
         events "passed", "skipped", "failed"
     }
 }
-// Kotlin 컴파일러가 Java 17 버전을 타겟으로 하도록 설정합니다.
+// Kotlin 컴파일러가 Java 17 버전을 타겟으로 하도록 설정합니다..
 kotlin {
     jvmToolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
@@ -42,6 +59,7 @@ application {
     mainClass = 'MainKt'
 }
 
+
 // `runMultiplicationTable` 태스크 추가
 tasks.register('runMultiplicationTable', JavaExec) {
     group = 'application'
@@ -51,6 +69,7 @@ tasks.register('runMultiplicationTable', JavaExec) {
     standardInput = System.in
     standardOutput = System.out
 }
+
 
 tasks.register('runMinMaxFinder', JavaExec) {
     group = 'application'
