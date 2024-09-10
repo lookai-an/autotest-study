@@ -11,7 +11,6 @@ plugins {
 group = 'study-kotlin2024'
 description = "study-kotlin2024"
 
-// mavenCentral(): Maven Central 저장소를 사용하여 프로젝트 의존성을 다운로드합니다.
 repositories {
     mavenCentral()
 }
@@ -42,7 +41,6 @@ configurations.all {
     }
 }
 
-// JUnit 플랫폼을 사용하여 테스트를 실행하도록 설정합니다.
 test {
     useTestNG()
     testLogging {
@@ -61,6 +59,7 @@ application {
     mainClass = 'MainKt'
 }
 
+
 // `runMultiplicationTable` 태스크 추가
 tasks.register('runMultiplicationTable', JavaExec) {
     group = 'application'
@@ -70,6 +69,7 @@ tasks.register('runMultiplicationTable', JavaExec) {
     standardInput = System.in
     standardOutput = System.out
 }
+
 
 tasks.register('runMinMaxFinder', JavaExec) {
     group = 'application'
