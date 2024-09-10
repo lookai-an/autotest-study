@@ -47,7 +47,7 @@ test {
         events "passed", "skipped", "failed"
     }
 }
-// Kotlin 컴파일러가 Java 17 버전을 타겟으로 하도록 설정합니다.
+// Kotlin 컴파일러가 Java 17 버전을 타겟으로 하도록 설정합니다..
 kotlin {
     jvmToolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
