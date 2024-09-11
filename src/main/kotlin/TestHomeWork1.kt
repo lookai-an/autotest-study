@@ -2,7 +2,6 @@ package org.example
 
 import org.testng.annotations.Test
 import org.testng.Assert.assertEquals
-import org.testng.Assert.assertTrue
 
 class TestHomeWork1 {
     private val hw1 = Homework1()

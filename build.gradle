@@ -28,6 +28,8 @@ dependencies {
     // 호환되는 Selenium 버전
     implementation("org.seleniumhq.selenium:selenium-java:4.9.1")
 
+    implementation('io.appium:java-client:8.1.1')
+
 }
 
 
